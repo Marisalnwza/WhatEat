@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    Random r = new Random();
+    Random r = new Random(); //สำหรับการสุ่มตัวเลข
     int random;
 
     @Override
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button randomButton = findViewById(R.id.randomButton);
+        Button randomButton = findViewById(R.id.randomButton); //ปุ่มสุ่มอาหาร
         randomButton.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view){
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         AppDatabase db = AppDatabase.getInstance(MainActivity.this);
                         final Food[] allFood = db.foodDao().getAllFoods();
-                        random = r.nextInt(allFood.length);
-                        Food food = db.foodDao().getFoodById(random);
+                        random = r.nextInt(allFood.length); //สุ่มตัวเลขตามจำนวนข้อมูลดาต้าเบส
+                        Food food = db.foodDao().getFoodById(random); //get ID โดยทำการสุ่มตัวเลข ID
                         final String message = String.format(food.foodName);
                         executors.mainThread().execute(new Runnable() {
                             @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                                         .setNegativeButton("ไม่กินอ่ะ สุ่มใหม่",new DialogInterface.OnClickListener(){
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                //todo: ทำการสุ่มเลขใหม่
+                                                //ทำการสุ่มเลขใหม่
                                                 random = r.nextInt(allFood.length);
                                             }
                                         })
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button listButton = findViewById(R.id.listButton);
+        Button listButton = findViewById(R.id.listButton);//ปุ่มไปยังหน้ารายการอาหาร
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

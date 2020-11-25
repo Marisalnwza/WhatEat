@@ -25,7 +25,7 @@ public class FoodActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.food_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(FoodActivity.this));
 
-        Button addFoodButton = findViewById(R.id.addFoodButton);
+        Button addFoodButton = findViewById(R.id.addFoodButton); //ปุ่มเพิ่มอาหาร
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +50,7 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void run() {
                 AppDatabase db = AppDatabase.getInstance(FoodActivity.this);
-                final Food[] foods = db.foodDao().getAllFoods();
+                final Food[] foods = db.foodDao().getAllFoods(); //แสดงข้อมูลทั้งหมดในดาต้าเบส
 
                 executors.mainThread().execute(new Runnable() {
                     @Override
@@ -60,26 +60,7 @@ public class FoodActivity extends AppCompatActivity {
                     }
                 });
 
-        /*String msg = "";
-        for (User u : users) {
-          Log.i(TAG, u.firstName + " " + u.lastName);
-          msg += String.format(
-              Locale.getDefault(),
-              "%s %s %s\n",
-              u.firstName, u.lastName, DateFormatter.formatForUi(u.birthDate)
-          );
-        }
 
-        final String message = msg;
-        executors.mainThread().execute(new Runnable() {
-          @Override
-          public void run() { // main thread
-            new AlertDialog.Builder(MainActivity.this)
-                .setMessage(message)
-                .setPositiveButton("OK", null)
-                .show();
-          }
-        });*/
             }
         });
     }

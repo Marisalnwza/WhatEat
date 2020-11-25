@@ -17,7 +17,7 @@ public class Food {
 
     public Food(int id, String foodName) {
         this.id = id;
-        this.foodName = foodName;
+        this.foodName = foodName; //ชื่ออาหาร
 
     }
 }

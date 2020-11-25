@@ -27,7 +27,7 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
 
-        Button saveButton = findViewById(R.id.addFoodButton);
+        Button saveButton = findViewById(R.id.addFoodButton); //เพิ่มชื่ออาหารลงในดาต้าเบส
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
